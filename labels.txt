@@ -1,0 +1,4 @@
+Lightning
+MicroUSB
+USB-A
+USB-C

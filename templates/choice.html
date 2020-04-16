@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>     
+        <meta charset="utf-8">
+        <title>cable_cv</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    </head>
+
+    <body>
+        <h1>PORTapp</h1>
+
+        <img src="{{user_image}}" alt="fotka s oznacenymi boxy">
+
+        <div id="conroller">
+            <p><a href="/camera"><button>nova fotka</button></a></p>
+        </div>
+
+        <input type="hidden" id="port1" value="{{port1}}">
+        <input type="hidden" id="port2" value="{{port2}}">
+
+        <input type="text" id="length" name="length">
+
+        <input type="hidden" id="search_text" name="search_text">
+      
+        
+        <div id="controller">
+            <button id="search">Search</button>
+        </div>
+        
+        <script>
+            
+            'use strict'
+
+            const length = document.getElementById('length');
+
+            const port1 = document.getElementById('port1');
+            const port2 = document.getElementById('port2');
+            
+            const search_text = document.getElementById('search_text');
+            const search = document.getElementById('search');
+
+            search.addEventListener("click", function(){
+                search_text.value = port1.value + " to " + port2.value + ' ' + length.value + "m";
+                window.open("https://www.bing.com/search?q="+search_text.value);
+            });
+
+        </script>
+
+        
+    </body>
+
+</html>

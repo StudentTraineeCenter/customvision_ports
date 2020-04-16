@@ -7,72 +7,17 @@
     </head>
 
     <body>
-        <h1>Dark mode coming soon...</h1>
+        <h1>PORTapp</h1> 
 
-
-        <center>
-        <div class="video-wrap">
-            <video id="video" playsinline autoplay></video>
+        <div id="features">
+            <div class="card">
+                <img src="../static/img/cables.jpg" alt="Obrazek dvou portu" style="width:100%">
+                    <h1>Najit stejny kabel</h1>
+                    <p>Vyfotte kabel a najde novy</p>
+                    <p><a href="/camera"><button>Lets go</button></a></p>
+            </div> 
         </div>
-        </center>
-
-        <div class="controller">
-            <button id="snap">Capture</button>
-        </div>
-        
-        <canvas id="canvas" width="640", height="480"></canvas>
-
-        <form action="/detect" method="POST" id="send">
-            <input type="hidden" id="image" name="image">
-        </form>
-
-
-    <script>
-
-        'use strict';
-
-        const video = document.getElementById('video');
-        const canvas = document.getElementById('canvas');
-        const snap = document.getElementById('snap');
-        const errorMsgElement = document.getElementById('span#ErrorMsg');
-        const inputImage = document.getElementById('image')
-        const formImage = document.getElementById('send')
-
-        const constraints = { 
-            audio: false,
-            video: {
-                width: 1280, height: 720
-            }
-        };
-
-        async function init(){
-            try{
-                const stream = await navigator.mediaDevices.getUserMedia(constraints);
-                handleSuccess(stream);
-            }
-            catch(e){
-                errorMsgElement.innerHTML = `navigator.getUserMedia.error:${e.toString()}`;
-            }
-        }
-
-        function handleSuccess(stream){
-            window.stream = stream;
-            video.srcObject = stream;
-        }
-
-        init();
-
-        var context = canvas.getContext("2d");
-        snap.addEventListener("click", function(){
-            context.drawImage(video, 0, 0, 640, 480);
-    
-            var dataURL = canvas.toDataURL();
-            inputImage.value = dataURL;
-            formImage.submit();
-        });
-
-    </script>
-
+     
     </body>
 
 </html>

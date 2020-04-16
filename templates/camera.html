@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>     
+        <meta charset="utf-8">
+        <title>cable_cv</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    </head>
+
+    <body>
+        <h1>PORTapp</h1>
+        <h2>vyfot cable</h2>
+
+        <div class="video-wrap">
+            <video id="video" playsinline autoplay></video>
+        </div>
+      
+
+        <div class="controller">
+            <button id="snap">Capture</button>
+        </div>
+
+        <div class="controller">
+            <button id="submit">Submit</button>
+        </div>
+        
+        <canvas id="canvas" width="1000" height="470"></canvas>
+
+        <form action="/detect" method="POST" id="send">
+            <input type="hidden" id="image" name="image">
+        </form>
+
+
+    <script>
+
+        'use strict';
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const snap = document.getElementById('snap');
+        const submit = document.getElementById('submit');
+        const errorMsgElement = document.getElementById('span#ErrorMsg');
+        const inputImage = document.getElementById('image');
+        const formImage = document.getElementById('send');
+
+        const constraints = { 
+            audio: false,
+            video: {
+                width: 1000,
+                height: 470
+            }
+        };
+
+        async function init(){
+            try{
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            }
+            catch(e){
+                errorMsgElement.innerHTML = `navigator.getUserMedia.error:${e.toString()}`;
+            }
+        }
+
+        function handleSuccess(stream){
+            window.stream = stream;
+            video.srcObject = stream;
+        }
+
+        init();
+
+        var context = canvas.getContext("2d");
+        snap.addEventListener("click", function(){
+            context.drawImage(video, 0, 0);
+        });
+
+        submit.addEventListener("click", function(){
+            var dataURL = canvas.toDataURL();
+            inputImage.value = dataURL;
+            formImage.submit();
+        });
+
+    </script>
+
+    </body>
+
+</html>

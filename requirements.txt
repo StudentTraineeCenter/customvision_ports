@@ -58,7 +58,7 @@ python-dateutil==2.6.1
 python-debian==0.1.32
 pytz==2018.3
 reportlab==3.4.0
-requests==2.18.4
+requests==2.20.0
 requests-unixsocket==0.1.5
 scipy==1.4.1
 screen-resolution-extra==0.0.0

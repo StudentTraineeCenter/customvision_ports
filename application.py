@@ -13,16 +13,12 @@ from helpfuncs import draw_boxes #extra functions used
 
 
 app = Flask(__name__)
-app.config['IMAGE_UPLOADS'] = 'static/img'
-
-important_imgs = ["cables.jpg"] #images that are used in templates
+app.config['IMAGE_UPLOADS'] = 'static/img/user_img'
 
 @app.route("/")
 def home():
     
-    for file in os.listdir(app.config['IMAGE_UPLOADS']): #deleting images loaded from user before except from important ones, dont know how to display withou saving the image
-
-        if file in important_imgs: continue
+    for file in os.listdir(app.config['IMAGE_UPLOADS']): #deleting images loaded from user before
 
         file_path = os.path.join(app.config['IMAGE_UPLOADS'], file)
 
@@ -34,7 +30,7 @@ def home():
         except Exception as e:
 
             print('Failed to delete %s. Reason: %s' % (file_path, e))
-
+    
     return render_template('index.html')
 
 
@@ -54,11 +50,11 @@ def detection():
             image_data = BytesIO(base64.b64decode(image_b64)) 
             
             image = Image.open(image_data)
-
+            image.show()
             predictions = main(image_data)
             image = draw_boxes(image_data, predictions)
 
-            if image == None: return render_template('camera.html')
+            if image == None: return render_template('choice.html')
 
             image = image.convert("RGB")
             #buffered = BytesIO()

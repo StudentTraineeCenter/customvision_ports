@@ -2,7 +2,6 @@ appdirs==1.4.3
 asn1crypto==0.24.0
 astroid==2.3.3
 azureml==0.2.7
-Brlapi==0.6.6
 certifi==2018.1.18
 chardet==3.0.4
 Click==7.0

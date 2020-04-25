@@ -2,5 +2,5 @@ azureml==0.2.7
 Flask==1.1.1
 numpy==1.18.1
 Pillow==5.1.0
-tensorflow==2.1.0 
+tensorflow==1.15.0 
 opencv-python==4.2.0.34

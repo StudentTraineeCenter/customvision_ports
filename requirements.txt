@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-appdirs==1.4.3
-asn1crypto==0.24.0
-astroid==2.3.3
-=======
->>>>>>> 454809da531a02ae36f5c3289ea03be8d0654e95
-azureml==0.2.7
 Flask==1.1.1
 numpy==1.18.1
 Pillow==5.1.0
 tensorflow
-opencv-python==4.2.0.34
+

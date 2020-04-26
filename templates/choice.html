@@ -3,28 +3,36 @@
     <head>     
         <meta charset="utf-8">
         <title>cable_cv</title>
-        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <link rel = "stylesheet" type = "text/css" href = "../static/css/style.css" />
+        <style>
+            body {background-image: url("cablebg7.jpg");
+                background-size: cover;}
+        </style>
     </head>
 
     <body>
-        <h1>PORTapp</h1>
+        <h1 class="h" style="font-family:Segoe UI; text-align:center; font-size:350%; background-color: white;">PORTapp</h1>
+        
+        <body>
+        
 
-        <img src="{{user_image}}" alt="fotka s oznacenymi boxy">
-
-        <div id="conroller">
-            <p><a href="/camera"><button>nova fotka</button></a></p>
-        </div>
+        <div class="card2" style="background-color:rgba(250, 250, 250, 0.9);">
+             
+        <img style= "width:100%" class= "img" src="{{user_image}}" alt="fotka s oznacenymi boxy" >
 
         <input type="hidden" id="port1" value="{{port1}}">
         <input type="hidden" id="port2" value="{{port2}}">
 
-        <input type="text" id="length" name="length">
+        <input class="search" type="text" id="length" name="length">
 
         <input type="hidden" id="search_text" name="search_text">
       
+        <p>
+            <a href="/camera" class="button">New photo</a>  
+            <button id="search" class="button">Search</button>
+        </p>
         
-        <div id="controller">
-            <button id="search">Search</button>
+            
         </div>
         
         <script>
@@ -45,8 +53,11 @@
             });
 
         </script>
+        </body>
 
         
     </body>
 
 </html>
+
+

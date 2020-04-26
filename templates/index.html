@@ -3,19 +3,26 @@
     <head>     
         <meta charset="utf-8">
         <title>cable_cv</title>
-        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <link rel = "stylesheet" type = "text/css" href = "../static/css/style.css" />
+        <style>
+            body {background-image: url("cablebg7.jpg");
+                background-size: cover;
+                
+        }
+        
+        </style>
     </head>
 
     <body>
-        <h1>PORTapp</h1> 
+        <h1 class="h" style="font-family:Segoe UI; text-align:center; font-size:350%; background-color: white; background-size: 700px;">PORTapp</h1> 
 
-        <div id="features">
-            <div class="card">
-                <img src="../static/img/cables.jpg" alt="Obrazek dvou portu" style="width:100%">
-                    <h1>Najit stejny kabel</h1>
-                    <p>Vyfotte kabel a najde novy</p>
-                    <p><a href="/camera"><button>Lets go</button></a></p>
-            </div> 
+        <div id="features" class="card" style="background-color:rgba(250, 250, 250, 0.9);">
+            
+                <img src="../static/img/cablesc.jpg" alt="Obrazek dvou portu" style="width:100%">
+                    <h1>Search for cable</h1>
+                    <p style="font-size: 140%;">Vyfotte kabel a najde novy</p>
+                    <p><a href="/camera"><button>Let's go</button></a></p>
+            
         </div>
      
     </body>

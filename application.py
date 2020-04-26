@@ -56,11 +56,6 @@ def detection():
             if image == None: return render_template('choice.html')
 
             image = image.convert("RGB")
-            #buffered = BytesIO()
-            #image.save(buffered, format="JPEG") 
-            #image_url = base64.b64encode(buffered.getvalue())
-            #image_url = str("^data:image/.+;base64,", encoding='utf-8') + image_url
-            #image_url = "^data:image/.+;base64," + image_url
             image = image.save(os.path.join(app.config['IMAGE_UPLOADS'], '{}.jpg'.format(predictions[0]['probability'])))
 
             return render_template('choice.html', user_image=os.path.join(app.config['IMAGE_UPLOADS'], '{}.jpg'.format(predictions[0]['probability']))

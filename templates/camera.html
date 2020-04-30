@@ -33,8 +33,8 @@
     <script>
 
         'use strict';
-
-        const video = document.getElementById('video');
+        
+        const video = document.getElementById('video'); 
         const canvas = document.getElementById('canvas');
         const snap = document.getElementById('snap');
         const submit = document.getElementById('submit');
@@ -42,7 +42,7 @@
         const inputImage = document.getElementById('image');
         const formImage = document.getElementById('send');
 
-        const constraints = { 
+        const constraints = { //rozměry okna webkamery
             audio: false,
             video: {
                 width: 1000,
@@ -67,15 +67,15 @@
 
         init();
 
-        var context = canvas.getContext("2d");
-        snap.addEventListener("click", function(){
-            context.drawImage(video, 0, 0);
+        var context = canvas.getContext("2d"); 
+        snap.addEventListener("click", function(){ 
+            context.drawImage(video, 0, 0); //vykreslí snímek na canvas
         });
 
         submit.addEventListener("click", function(){
-            var dataURL = canvas.toDataURL();
-            inputImage.value = dataURL;
-            formImage.submit();
+            var dataURL = canvas.toDataURL(); //převede canvas na base64 data
+            inputImage.value = dataURL; //předání dat
+            formImage.submit(); //odeslání formu na backend serveru (application.py)
         });
 
     </script>

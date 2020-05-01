@@ -7,7 +7,7 @@
 import sys
 import tensorflow as tf
 import numpy as np
-from PIL import Image
+import Image
 from object_detection import ObjectDetection
 
 MODEL_FILENAME = 'model.pb'

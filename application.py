@@ -5,7 +5,7 @@ import os
 import base64
 import re
 from io import BytesIO
-from PIL import Image
+import Image
 import sys
 sys.path.insert(1, 'python') #umožní importovat soubory z jiné složky
 from predict import main

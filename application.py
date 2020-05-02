@@ -10,6 +10,7 @@ import sys
 sys.path.insert(1, 'python') #umožní importovat soubory z jiné složky
 from predict import main
 
+
 #funkce vykreslující boxy kolem detekovaných objektů
 def draw_boxes(image_data, predictions): 
     #nejmenší validní počet nalezených objektů

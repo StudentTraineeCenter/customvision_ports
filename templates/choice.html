@@ -6,25 +6,29 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     </head>
 
-    <body>
-        <h1>PORTapp</h1>
+    <body class="body">
+        <h1 class="h">PORTapp</h1>
+        
+        <body>
+        
 
-        <img src="{{user_image}}" alt="fotka s oznacenymi boxy">
-
-        <div id="conroller">
-            <p><a href="/camera"><button>nova fotka</button></a></p>
-        </div>
+        <div class="card2">
+             
+        <img class= "img" src="{{user_image}}" alt="fotka s oznacenymi boxy" >
 
         <input type="hidden" id="port1" value="{{port1}}">
         <input type="hidden" id="port2" value="{{port2}}">
 
-        <input type="text" id="length" name="length">
+        <input class="search" type="text" id="length" name="length">
 
         <input type="hidden" id="search_text" name="search_text">
       
+        <p>
+            <a href="/camera" class="button">New photo</a>  
+            <button id="search" class="button">Search</button>
+        </p>
         
-        <div id="controller">
-            <button id="search">Search</button>
+            
         </div>
         
         <script>
@@ -45,6 +49,7 @@
             });
 
         </script>
+        </body>
 
         
     </body>

@@ -6,24 +6,20 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     </head>
 
-    <body>
-        <h1>PORTapp</h1>
-        <h2>vyfot cable</h2>
+    <body class="body">
+        <h1 class="h2">PORTapp</h1>
+        <div id="features" class="card2">
 
+        <h2 class="h3">Take a photo of cable</h2>
+        <button class="button" id="snap">Capture</button>
+        <button class="button" id="submit">Submit</button>
+        </div>
+        
         <div class="video-wrap">
             <video id="video" playsinline autoplay></video>
         </div>
       
-
-        <div class="controller">
-            <button id="snap">Capture</button>
-        </div>
-
-        <div class="controller">
-            <button id="submit">Submit</button>
-        </div>
-        
-        <canvas id="canvas" width="1000" height="470"></canvas>
+        <canvas id="canvas" class="video-wrap" width="1000" height="470"></canvas>
 
         <form action="/detect" method="POST" id="send">
             <input type="hidden" id="image" name="image">
@@ -33,8 +29,8 @@
     <script>
 
         'use strict';
-        
-        const video = document.getElementById('video'); 
+
+        const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const snap = document.getElementById('snap');
         const submit = document.getElementById('submit');
@@ -42,7 +38,7 @@
         const inputImage = document.getElementById('image');
         const formImage = document.getElementById('send');
 
-        const constraints = { //rozměry okna webkamery
+        const constraints = { 
             audio: false,
             video: {
                 width: 1000,
@@ -67,15 +63,15 @@
 
         init();
 
-        var context = canvas.getContext("2d"); 
-        snap.addEventListener("click", function(){ 
-            context.drawImage(video, 0, 0); //vykreslí snímek na canvas
+        var context = canvas.getContext("2d");
+        snap.addEventListener("click", function(){
+            context.drawImage(video, 0, 0);
         });
 
         submit.addEventListener("click", function(){
-            var dataURL = canvas.toDataURL(); //převede canvas na base64 data
-            inputImage.value = dataURL; //předání dat
-            formImage.submit(); //odeslání formu na backend serveru (application.py)
+            var dataURL = canvas.toDataURL();
+            inputImage.value = dataURL;
+            formImage.submit();
         });
 
     </script>

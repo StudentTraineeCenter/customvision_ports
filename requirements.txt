@@ -1,5 +1,5 @@
 Flask==1.1.1
-Pillow==6.2.0
+Pillow==7.1.2
 tensorflow-cpu
 numpy==1.18.1
 

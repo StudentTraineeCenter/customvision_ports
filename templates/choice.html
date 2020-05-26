@@ -2,37 +2,34 @@
 <html lang="cs">
     <head>     
         <meta charset="utf-8">
-        <title>cable_cv</title>
+        <title>PortVision</title>
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <link rel = "stylesheet" type = "text/css" href = "../static/css/style.css" />
     </head>
 
     <body class="body">
-        <h1 class="h">PORTapp</h1>
+        <h1 class="h2">PortVision</h1>
         
         <body>
         
+        <img class="img" src="{{user_image}}" alt="fotka s vyznačenými boxy" >
 
-        <div class="card2">
+        <div class="card3">
              
-        <img class= "img" src="{{user_image}}" alt="fotka s oznacenymi boxy" >
-
         <input type="hidden" id="port1" value="{{port1}}">
         <input type="hidden" id="port2" value="{{port2}}">
-
-        <input class="search" type="text" id="length" name="length">
+        
+        <p style="padding-top: 20px">Zadejte délku kabelu v metrech</p>
+        <input class="search" type="text" value="1" id="length" name="length">
 
         <input type="hidden" id="search_text" name="search_text">
-      
-        <p>
-            <a href="/camera" class="button">New photo</a>  
-            <button id="search" class="button">Search</button>
-        </p>
         
-            
+            <a href="/camera" class="button">Vyfotit znovu</a>  
+            <button class="button">Vyhledat</button>
+        
         </div>
         
         <script>
-            
             'use strict'
 
             const length = document.getElementById('length');

@@ -1,5 +1,5 @@
 #backend aplikace
-#obsahuje infrastrukturu k přesměrování mezi stránkami, zpracovává snímky od uživatele
+#obsahuje infrastrukturu k navigaci mezi stránkami, zpracovává snímky od uživatele
 from flask import Flask, render_template, request
 import os
 import base64
@@ -7,7 +7,7 @@ import re
 from io import BytesIO
 from PIL import Image, ImageDraw
 import sys
-sys.path.insert(1, 'python') #umožní importovat soubory z jiné složky
+sys.path.append('python') #umožní importovat soubory z jiné složky
 from predict import main
 
 
@@ -33,8 +33,10 @@ def draw_boxes(image, predictions):
 
     return image
 
+
 app = Flask(__name__) #vytvoření instance aplikace
 app.config['IMAGE_UPLOADS'] = 'static/img/user_img' #složka se snímky uživatelů
+
 
 @app.route("/") #základní menu
 def home():
@@ -57,7 +59,7 @@ def home():
 
 @app.route("/camera", methods=['GET', 'POST']) #pořizování snímků
 def camera():
-    return render_template('camera.html')
+    return render_template('camera.html', message="pokuď kameru nevidíte musíte ji buď zapnout nebo povolit v prohlížeči")
     
     
 @app.route("/detect", methods=['GET', 'POST']) #zobrazení výsledků
@@ -73,7 +75,7 @@ def detection():
             predictions = main(image_data) #předání snímku customvision modelu
             image = draw_boxes(image, predictions) #vykreslí boxy
             #pokud nenajde dost nebo žádný objekt vrátí uživatele zpět
-            if image == None: return render_template('camera.html')
+            if image == None: return render_template('camera.html', message="Nenalezeno dost objektů, zkuste to prosím znovu.")
             #uloží snímek s vykreslenými boxy
             image = image.save(os.path.join(app.config['IMAGE_UPLOADS'], '{}.png'.format(predictions[0]['probability']))) 
 

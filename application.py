@@ -20,7 +20,8 @@ def draw_boxes(image, predictions):
     img_width, img_height = image.size #předání rozměrů
     img = ImageDraw.Draw(image) 
     
-    for obj in predictions:
+    for i, obj in enumerate(predictions):
+        if i > 1: break
         x0 = obj['boundingBox']['left'] * img_width  #horní levý roh
         y0 = obj['boundingBox']['top'] * img_height
 

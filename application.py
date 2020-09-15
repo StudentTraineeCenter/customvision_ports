@@ -5,12 +5,12 @@ import os
 import base64
 import re
 from io import BytesIO
-#from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw
 import sys
 sys.path.append('python') #umožní importovat soubory z jiné složky
 from predict import main
 
-"""
+
 #funkce vykreslující boxy kolem detekovaných objektů
 def draw_boxes(image, predictions): 
     #nejmenší validní počet nalezených objektů
@@ -33,7 +33,7 @@ def draw_boxes(image, predictions):
         img.text((x0 + 10, y0 + 10), obj['tagName'], fill="red") #přidá popisek
 
     return image
-"""
+
 
 app = Flask(__name__) #vytvoření instance aplikace
 app.config['IMAGE_UPLOADS'] = 'static/img/user_img' #složka se snímky uživatelů
@@ -51,7 +51,9 @@ def home():
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
+
         except Exception as e:
+
 
             print('Failed to delete %s. Reason: %s' % (file_path, e))
     
@@ -62,7 +64,7 @@ def home():
 def camera():
     return render_template('camera.html', message="pokuď kameru nevidíte musíte ji buď zapnout nebo povolit v prohlížeči")
     
- """   
+
 @app.route("/detect", methods=['GET', 'POST']) #zobrazení výsledků
 def detection():
     
@@ -82,7 +84,7 @@ def detection():
 
             return render_template('choice.html', user_image=os.path.join(app.config['IMAGE_UPLOADS'], '{}.png'.format(predictions[0]['probability']))
             ,port1=predictions[0]['tagName'], port2=predictions[1]['tagName'])
-"""    
+
 
 if __name__ == "__main__":
-        app.run(port=8000)
+        app.run(host='0.0.0.0',port="8000",debug=True)

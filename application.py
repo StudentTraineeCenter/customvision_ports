@@ -5,13 +5,13 @@ import os
 import base64
 import re
 from io import BytesIO
-from PIL import ImageDraw, Image
+from PIL import ImageDraw, Image 
 import sys
 sys.path.append('python') #umožní importovat soubory z jiné složky
 from predict import main
 
 
-#funkce vykreslující boxy kolem detekovaných objektů
+#následující funkce vykreslující boxy kolem detekovaných objektů
 def draw_boxes(image, predictions): 
     #nejmenší validní počet nalezených objektů
     if len(predictions) <= 1: 
